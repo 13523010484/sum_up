@@ -1,0 +1,32 @@
+一、移动端开发使用vw单位做适配
+根节点字体是28px,字体大小/28rem，布局大小/7.5(或6.4)vw
+
+html {
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    margin: 0;
+}
+
+@media screen and (min-width: 320px) and (max-width: 450px) {
+    html {
+        font-size: calc(28 / 7.5 * 1vw);
+    }
+}
+
+二、移动端开发使用rem单位做适配
+/* 当用户在手机上修改字体尺寸时，保证布局页面基本布局不变 */
+function setPxPerRem() { //自适应屏幕设置rem
+    var dpr = 1;
+    var cssEl = document.createElement('style');
+    document.documentElement.firstElementChild.appendChild(cssEl);
+    //把viewport分成10份的rem，html标签的font-size设置为1rem的大小
+    var pxPerRem = document.documentElement.clientWidth * dpr / 10;
+    cssEl.innerHTML = 'html{font-size:' + pxPerRem + 'px !important;}';
+    document.getElementsByTagName('HTML')[0].setAttribute('rem', pxPerRem);
+    //获取浏览器当前实际渲染的字体大小
+    var realRem = parseInt(window.getComputedStyle(document.querySelector('html')).getPropertyValue('font-size'));
+    cssEl.innerHTML = 'html{font-size:' + (pxPerRem * pxPerRem / realRem) + 'px !important;}';
+}
+setPxPerRem();
