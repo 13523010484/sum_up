@@ -1,12 +1,8 @@
-<<<<<<< HEAD
 工具的使用：
 everything：搜索电脑中的文件
 express：接口调试时启动的本地服务
 
 2018-08-06添加：
-
-=======
->>>>>>> b4fbfdc30599d9ab9b1ccfe98016c652f4a1b09b
 一、移动端开发使用vw单位做适配
 根节点字体是28px,字体大小/28rem，布局大小/7.5(或6.4)vw
 
@@ -38,7 +34,6 @@ function setPxPerRem() { //自适应屏幕设置rem
     var realRem = parseInt(window.getComputedStyle(document.querySelector('html')).getPropertyValue('font-size'));
     cssEl.innerHTML = 'html{font-size:' + (pxPerRem * pxPerRem / realRem) + 'px !important;}';
 }
-<<<<<<< HEAD
 setPxPerRem();
 
 三、修改单选框、复选框的默认样式(使用图片代替单选的默认样式)
@@ -76,11 +71,5 @@ label input[type="radio"]:after, label input[type="radio"]:checked:after,label i
 	background-size: 100% 100%;
 }
 
-四、
-
-
 
 2018-08-07新增：
-=======
-setPxPerRem();
->>>>>>> b4fbfdc30599d9ab9b1ccfe98016c652f4a1b09b
