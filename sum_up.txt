@@ -72,4 +72,24 @@ label input[type="radio"]:after, label input[type="radio"]:checked:after,label i
 }
 
 
-2018-08-07新增：
+2018-08-08新增：
+一、css3 渐变，背景图片定位可以写在一个样式当中
+https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_Background_and_Borders/Using_CSS_multiple_backgrounds
+例子：
+.body_panel {
+    height: 37.33vw;
+    color: #fff;
+    padding-left: 3.2vw;
+    background: url("../image/my-01.png"),url("../image/my-02.png"),linear-gradient(-45deg, #13d388 30%, #01af7d 100%);
+    background-repeat: no-repeat, no-repeat, no-repeat;
+    background-position: 37.86vw top, left bottom, left top;
+    background-size: 38.93vw auto,100% 8.8vw,100% 100%;
+}
+
+2018-08-09新增：
+子元素距离父元素上边距10px左右居中,使用margin:10px auto;不起作用，出现原因及解决方法：
+margin塌陷：
+父元素中的子元素使用margin:10px auto;时，子元素
+（1）为父盒子设置border:1px transparent solid;，为外层添加border后父子盒子就不是真正意义上的贴合。
+（2）为父盒子添加overflow：hidden；或者overflow:auto
+（3）为父盒子设定padding值。
