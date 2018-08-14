@@ -93,3 +93,28 @@ margin塌陷：
 （1）为父盒子设置border:1px transparent solid;，为外层添加border后父子盒子就不是真正意义上的贴合。
 （2）为父盒子添加overflow：hidden；或者overflow:auto
 （3）为父盒子设定padding值。
+
+2018-08-14新增：
+移动端列表滚动到底部分页
+滚动的临界值：
+第一页数据：滚动的高度+视窗的高度<=文档的高度
+第二页数据：滚动的高度+视窗的高度>文档的高度，page+1请求第二页的数据
+判断的条件：
+window.addEventListener('scroll', function (e) {// 监听滚动事件
+
+	if(window.screen.availHeight + window.scrollY > document.documentElement.scrollHeight - 10 
+	&& window.screen.availHeight < document.documentElement.scrollHeight){
+		page++;
+		get_list_data();//获取列表数据
+	}
+
+}
+
+window.screen.availWidth：返回当前屏幕宽度(空白空间)
+wiodow.screen.availHeight：返回当前屏幕高度(空白空间)
+wiodow.screen.width：返回当前屏幕宽度(分辨率值)
+wiodow.screen.height：返回当前屏幕高度(分辨率值)
+window.document.body.offsetHeight：返回当前网页高度
+window.document.body.offsetWidth：返回当前网页宽度
+js：获取浏览器基本信息
+https://blog.csdn.net/WangJiangNan17214/article/details/70143737
