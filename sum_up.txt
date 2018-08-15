@@ -110,6 +110,82 @@ window.addEventListener('scroll', function (e) {// 监听滚动事件
 
 }
 
+显示加载中，数据加载完的提示样式：
+.item_wrap:after {
+	display: block;
+	margin: 1.07142rem;
+	font-size: .85rem;
+	color: #999;
+	text-align: center;
+}
+
+.item_wrap[data-is-loading="true"]:after {
+	content: '加载中...';
+}
+
+.item_wrap[data-is-all="true"]:after {
+	content: '没有更多数据了哦~';
+}
+
+
+页面结构：
+<div class="item_wrap" data-page-total="0" data-next-page="1" data-is-loading="false" data-is-all="false">
+</div>
+
+移动端滚动到底部分页：
+function loadMoreListData(loadDom, errorCal, completeCal) {
+	if (loadDom.dataset.isLoading === 'true' || loadDom.dataset.isAll === 'true') {
+		return
+	}
+	loadDom.dataset.isLoading = true;
+	axios.get(host + url.charge_report_list, {
+		params: {
+			page: loadDom.dataset.nextPage,
+			size: 7
+		}
+	})
+		.then(function (res) {
+			if (res.data.code == 200) {
+				loadDom.dataset.nextPage = parseInt(loadDom.dataset.nextPage) + 1;
+				loadDom.dataset.pageTotal = res.data.data.total;
+				list_data(res.data.data.list);
+				if (document.querySelectorAll('.item').length >= res.data.data.total) {
+					loadDom.dataset.isAll = true;
+				}
+			}
+		})
+		.catch(errorCal).then(function () {
+		loadDom.dataset.isLoading = false;
+		completeCal && completeCal();
+	});
+}
+
+// 列表
+function list_data(data) {
+	data.forEach(function (item) {
+		document.querySelector('.item_wrap').insertAdjacentHTML('beforeend',`<div class="item"><div><div class="item_charging-time">${item.date.split('-').join('.')}</div><div class="item_charging-ways"><span class="red">${item.pay_money}</span><span>${item.pay_method==1?'月卡':''||item.pay_method==2?'次卡':''||item.pay_method==4?'余额':''||item.pay_method==8?'微信':''}</span><span>${item.time}</span><span>${item.device_name}</span></div></div></div>`)
+	})
+}
+
+// 列表第一页数据：
+loadMoreListData(document.querySelector('.item_wrap'));
+
+// 列表滚动到底部时加载更多数据：
+let status = false;
+window.addEventListener('scroll', function (e) {
+
+	if (!status) {
+		window.requestAnimationFrame(function () {
+			if (window.screen.availHeight + window.scrollY > document.documentElement.scrollHeight - 10 && window.screen.availHeight < document.documentElement.scrollHeight) {
+				loadMoreListData(document.querySelector('.item_wrap'));
+			}
+			status = false;
+		});
+		status = true;
+	}
+});
+
+
 window.screen.availWidth：返回当前屏幕宽度(空白空间)
 wiodow.screen.availHeight：返回当前屏幕高度(空白空间)
 wiodow.screen.width：返回当前屏幕宽度(分辨率值)
@@ -118,3 +194,19 @@ window.document.body.offsetHeight：返回当前网页高度
 window.document.body.offsetWidth：返回当前网页宽度
 js：获取浏览器基本信息
 https://blog.csdn.net/WangJiangNan17214/article/details/70143737
+
+2018-08-15新增：
+在common.js中定义全局变量的两种方式：
+定义一个host和url的对象，在页面中可以引用
+方法一：
+window.host = 'https://orenda.com.cn';
+window.url = {
+	"getListData":"/dadta/list"
+};
+方法二：
+host = 'https://orenda.com.cn';
+url = {
+	"getListData":"/dadta/list"
+};
+页面中访问：console.log(host)
+
