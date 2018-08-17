@@ -210,3 +210,116 @@ url = {
 };
 页面中访问：console.log(host)
 
+2018-08-15新增：
+css3 loading动画
+.modal_loading:before {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 44.4vw;
+    top: 71.2vw;
+    width: 11.2vw;
+    height: 11.2vw;
+    background: url("../image/icon_loading.png") center center no-repeat;
+    background-size: 100% 100%;
+    -webkit-animation: twr-spin 2s infinite linear;
+    animation: twr-spin 2s infinite linear;
+}
+
+@keyframes twr-spin {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+
+    100% {
+        -webkit-transform: rotate(359deg);
+        transform: rotate(359deg);
+    }
+}
+
+
+获取url参数：
+let get_url_params = new URLSearchParams(location.search).get('article_id');
+let url_params = new URLSearchParams(location.search);
+let device_id = url_params.get('device_id');
+
+隐藏div的几种方式：
+方式一：
+div{display:none;}
+不占据空间，但是如果在布局为display:flex的div上使用此隐藏方式则不起作用，需要在display:flex的
+最外层包裹一层div，再使用display:none的方式将其隐藏
+方式二、方式三
+visibility: hidden;或者opacity:0
+此方式占据空间
+
+2018-08-17新增：
+修改input radio checkbox的默认选中状态：
+ document.querySelector('.select-radio-balance>.select-radio>label:first-child>input[type=radio]').checked 
+ = !(document.querySelector('.select-radio-balance>.select-radio>label:first-child>input[type=radio]').checked);
+
+
+获取标签上的自定义属性 
+<a class="btn" href="javascript:;" onclick="paymentMoney(event)" data-payment-type='2'></a>
+function paymentMoney(e) {
+	console.log(e.currentTarget.dataset.paymentType);
+}
+
+
+sort:
+数组对象按照id值升序排列：
+function sortId(a, b) {
+	return a.id - b.id;
+}
+arr.sort(sortId)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
