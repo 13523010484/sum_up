@@ -274,6 +274,21 @@ function sortId(a, b) {
 arr.sort(sortId)
 
 
+2018-08-20新增：
+标签都有默认行高，在测量上下边距的时，如果按照设计稿上的尺寸来会有不准，解决方法：
+默认行高，如果文字确定是一行显示的话，设置line-height:100%;+设计稿实际边距。如果文字是多行显示的话，不设置
+行高为100%,减少设计稿实际边距为合适距离即可。
+
+定位配合css3动画使得div居中：
+div{
+	position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    width: 39%;
+    height: 5.5%;
+}
+
 
 
 
