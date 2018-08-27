@@ -333,6 +333,11 @@ function getSecondcByStr(timeStr) {
 
 2018-08-27新增：
 小程序异步请求：
+1、启动页。
+2、把获取cms_code的接口写在首页的js里面。
+3、在onLaunch和首页的js里面都写获取cms_code的接口。
+4、在onLaunch里面写获取cms_code的接口，在首页的onLoad函数中写一个定时器。
+5、在onLaunch里面引入promise.js。
 app.js onLaunch中发生的请求有时会在首页app.js之后，解决办法，定时器：
 app.js
 onLaunch: function() {
