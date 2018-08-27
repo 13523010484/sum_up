@@ -289,6 +289,68 @@ div{
     height: 5.5%;
 }
 
+html{
+	-webkit-text-size-adjust: 100%;
+}
+
+iPhone和Android的浏览器纵向和横向模式皆有自动调节字体大小的功能，控制它的就是css中的-webkit-text-size-adjust
+-webkit-text-size-adjust设为none或者100%关闭字体大小自动调整功能。
+
+
+2018-08-23新增：
+计数器：
+
+
+} else if (res.data.data.status == 0) { // 充电中：页面显示字段
+
+	document.querySelector('.circle-small>span:first-child').dataset.lastSeconds = getSecondcByStr(res.data.data.charge_length);//存放起始的秒数
+	document.querySelector('.circle-small>span:first-child').dataset.countDownId = setInterval(countDown, 1000);//存放增加之后的秒数
+	document.querySelector('.circle-small>span:first-child').textContent = res.data.data.charge_length;
+}
+
+// 计数器
+function countDown() {
+	const dom = document.querySelector('.circle-small>span:first-child');
+	let lastSeconds = parseInt(dom.dataset.lastSeconds);//存放上一次的秒数
+	lastSeconds += 1;//正计时器：上一次的秒数增加1，倒计时器：上一次的秒数减少1
+	dom.textContent = numCampare(Math.floor(lastSeconds / 3600 % 60)) + ':' + numCampare(Math.floor(lastSeconds / 60 % 60)) + ':' + numCampare(lastSeconds % 60);
+	dom.dataset.lastSeconds = lastSeconds;
+
+}
+
+// 数字小于10补0
+function numCampare(num) {
+	return num < 10 ? '0' + num : num;
+}
+
+// 将后台返回的时间戳转换生秒数
+function getSecondcByStr(timeStr) {
+	let timeStrArray = timeStr.split(':').map(function (time) {
+		return parseInt(time);
+	});
+	return timeStrArray[0] * 3600 + timeStrArray[1] * 60 + timeStrArray[2];
+}
+
+2018-08-27新增：
+小程序异步请求：
+app.js onLaunch中发生的请求有时会在首页app.js之后，解决办法，定时器：
+app.js
+onLaunch: function() {
+  wx.login({
+      ...继续请求自己服务端生成cmsCode，保存到客户端
+  })
+}
+ 
+page.js(首页加载到页面)
+onLoad: function() {
+    let interval = setInterval(() => {
+      if (wx.getStorageSync('cmsCode')) { // 判断已经有token了
+        clearInterval(interval) // 清理定时器
+        ...wx.request()... // 继续业务请求
+      }
+    }, 50)
+}
+
 
 
 
