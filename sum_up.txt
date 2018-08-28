@@ -415,6 +415,35 @@ for(let value of arr){
 	console.log(value);
 }
 
+三、javascript循环遍历Nodelist Dom列表的四种方式
+
+NodeList对象是dom节点的集合，document.querySelectorAll()和Node.childNodes返回的都是
+NodeList对象，看起来很像数组却没有数组的方法，NodeList对象只有一个属性，length
+方法：nodeList对象只有一个方法：item(index),返回index位置的dom节点对象
+
+let nodeList = document.querySelectorAll('ul>li');
+
+1、for循环
+for(let i = 0;i<nodeList.length;i++){
+	console.log(nodeList[i]);
+}
+
+2、Array的forEach函数
+Array.prototype.forEach.call(nodeList,function(i){
+	console.log(i);
+})
+
+3、Array的forEach函数
+[].forEach.call(nodeList,function(item,index){
+	console.log(item);
+})
+
+4、继承Array的forEach函数
+NodeList.prototype.forEach = Array.prototype.forEach;
+nodeList.forEach(function(item,index){
+	console.log(item);
+})
+
 
 
 
