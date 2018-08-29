@@ -20,6 +20,9 @@ body {
     }
 }
 
+一、javascript常用的dom操作网址
+https://www.haorooms.com/post/js_dom_api
+
 二、移动端开发使用rem单位做适配
 /* 当用户在手机上修改字体尺寸时，保证布局页面基本布局不变 */
 function setPxPerRem() { //自适应屏幕设置rem
