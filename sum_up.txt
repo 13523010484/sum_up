@@ -1,6 +1,49 @@
-工具的使用：
-everything：搜索电脑中的文件
-express：接口调试时启动的本地服务
+一、工具的使用：
+1、谷歌浏览器下载软件图片时死机的解决办法：卸载输入法充电安装；切换输入法为系统自带的中文输入法进行下载
+1、everything：搜索电脑中的文件
+2、express：接口调试时启动的本地服务
+3、谷歌应用商店：https://chrome.google.com/webstore/category/extensions
+4、使用westorm拉项目时，在提交代码时，Git忽略规则，.gitignore梳理
+注：一般来说每个Git项目中都需要有一个.gitignore文件，这个文件的作用就是告诉Git
+哪些文件不需要添加到版本管理中，实际项目中，有很多都不需要版本管理，比如.idea，
+4.1：/mtk/  过滤整个文件夹
+4.2：*.zip  过滤所有.zip文件
+4.3: /mtk/do.c 过滤某个具体文件
+被过滤的文件不会出现在git仓库中，本地还有，只是在push的时候不会上传。
+4.4.1 .gitignore还可以指定要将哪些文件添加到版本管理中：
+只需要管理/mtk/目录中的one.txt文件，这个目录的其他文件都不需要，需要使用添加文件到版本管理
+!*.zip  !/mtk/one.txt 把.zip的文件添加到版本当中
+
+.gitignore配置文件用于配置不需要加入版本管理的文件，配置好该文件可以为版本管理带来很大的便利
+1)配置语法：
+以斜杠/开头的表示目录
+以星号*开头的表示通配多个字符
+以问号?通配单个字符
+以方括号[]包含单个字符的匹配列表
+以叹号!表示不忽略(跟踪)匹配到文件或目录
+
+.gitignore常用的配置
+/build
+/.idea
+/.gradle
+/local.properties
+.gitignore
+
+# 此为注释 – 将被 Git 忽略
+
+*.a       # 忽略所有 .a 结尾的文件
+!lib.a    # 但 lib.a 除外
+/TODO     # 仅仅忽略项目根目录下的 TODO 文件，不包括 subdir/TODO
+build/    # 忽略 build/ 目录下的所有文件
+doc/*.txt # 会忽略 doc/notes.txt 但不包括 doc/server/arch.txt
+
+1、小程序工具下载（4个代码编译工具）
+https://cnodejs.org/topic/580f007deae2a24f34e67ead
+
+
+
+
+前端开发中遇到的问题及解决办法：
 
 2018-08-06添加：
 一、移动端开发使用vw单位做适配
@@ -463,6 +506,16 @@ trim()方法用来删除字符串两端的空白字符并返回，trim()方法�
 单独去除右侧空格使用str.trimRight()
 
 
+2018-08-30新增：
+array的push()方法将一个或多个元素添加到数组的末尾，并返回新数组的长度
+push方法具有通用性，该方法和call()或apply()一起使用，可应用在类似数组的
+对象上。
+合并两个数组Array.prototype.push.apply(arr1,arr2)，注意到第二个数组太大时不要用这个方法来合并数组，因为事实上
+一个函数能够接受的参数个数是有限制的
+let arr1 = [1,2,3];
+let arr2 = [4,5,6];
+//将第二个数组融合到第一个数组
+Array.prototype.push.apply(arr1,arr2);
 
 
 
