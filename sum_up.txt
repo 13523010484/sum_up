@@ -45,6 +45,8 @@ https://cnodejs.org/topic/580f007deae2a24f34e67ead
 
 前端开发中遇到的问题及解决办法：
 
+UI设计稿导航栏的规范，128px
+
 2018-08-06添加：
 一、移动端开发使用vw单位做适配
 根节点字体是28px,字体大小/28rem，布局大小/7.5(或6.4)vw
@@ -516,6 +518,14 @@ let arr1 = [1,2,3];
 let arr2 = [4,5,6];
 //将第二个数组融合到第一个数组
 Array.prototype.push.apply(arr1,arr2);
+
+
+2018-09-28新增：
+小程序冒泡事件：
+target在事件流的目标阶段；currentTarget在事件流的捕获，目标及冒泡阶段。但事件流处于目标阶段，
+target与currentTarget指向一样， 而当处于捕获和冒泡阶段的时候，target指向被单击的对象
+而currentTarget指向当前事件活动的对象。在微信小程序中也可总结为：target指向发生事件的组件，
+currentTarget指向绑定事件的组件。
 
 
 
