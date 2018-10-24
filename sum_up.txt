@@ -528,6 +528,55 @@ target与currentTarget指向一样， 而当处于捕获和冒泡阶段的时候
 currentTarget指向绑定事件的组件。
 
 
+2018-10-19 新增
+tab切换(实现点击当前，当前的加下滑线，其余的有删除下划线，当前的高亮显示
+思路：遍历所有的div，删除他们的active样式，再为当前的添加active
+)
+ function orderStatus(_this) {
+        
+        [].forEach.call(document.querySelectorAll('.tab-wtap>.tab'), function (item,index) {
+            document.querySelectorAll('.tab-wtap>.tab')[index].classList.remove('active');
+            
+        });
+        
+        _this.classList.add('active');
+    }
+	
+	
+2018-10-24 新增
+修改checkbox的默认样式
+不使用input伪类来改变默认样式的原因：ios不兼容，出现黑边（漏出原生的复选框样式）
+为了解决兼容性的问题，使用将input隐层的形式，如下：
+css样式：
+
+label input[type="checkbox"] {
+	display: none;
+}
+
+label input[type="checkbox"] + span {
+	display: inline-block;
+	width: 4.53vw;
+	height: 4.53vw;
+	background: url("/static/my/mall/image/icon_checkbox.png") center center;
+	background-size: 100% 100%;
+}
+
+label input[type="checkbox"]:checked + span {
+	background: url("/static/my/mall/image/icon_checkbox-active.png") center center;
+	background-size: 100% 100%;
+
+}	
+
+页面结构：
+<label>
+	<input type='checkbox' value='' name='' />
+	<span></span>
+	<span>全选</span>
+</label>
+
+
+
+
 
 
 
