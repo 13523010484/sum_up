@@ -49,6 +49,9 @@ UI设计稿导航栏的规范，128px
 
 2018-08-06添加：
 一、移动端开发使用vw单位做适配
+meta标签
+<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0"/>
+
 根节点字体是28px,字体大小/28rem，布局大小/7.5(或6.4)vw
 
 html {
@@ -575,6 +578,15 @@ label input[type="checkbox"]:checked + span {
 </label>
 
 
+2018-11-01 新增
+使用原生的html和js和使用框架开发的不同之处：
+一、使用html5、css3、javascript
+1、使用html5、css3完成静态页面排版工作，使用javascript的dom操作完成
+页面中的一些交互效果，dom.classList.add('style')、dom.classList.remove('style');
+页面数据渲染：dom.insertAdjacentHTML('beforeend',`<div>${data.name}</div>`)
+2、移动端的列表滚动到底部分页，使用javascript的监听滚动事件实现。
+二、使用框架开发
+1、使用框架开发，有专门的监听页面滚动到底部的事件，有页面列表渲染和条件判断的方法，降低开发难度
 
 
 
