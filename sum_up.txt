@@ -589,6 +589,27 @@ label input[type="checkbox"]:checked + span {
 1、使用框架开发，有专门的监听页面滚动到底部的事件，有页面列表渲染和条件判断的方法，降低开发难度
 
 
+2018-11-13 新增
+一、html5为input添加一键删除
+1、实现的方式，input末尾必须添加require标记，这是h5的验证标记
+2、准被一个用于显示删除按钮的dom元素，例如span
+<div class="invite-code-panel">
+	<input type="text" class="invite-code-input" placeholder="请输入..." required/>
+	<span class="editable-clear-x">×</span>
+</div>
+3、css3控制按钮显示
+a、删除按钮默认隐藏
+b、通过:valid+可以控制当input输入内容后<span/>则显示
+.invite-code-panel .editable-clear-x {
+  right: 15px;
+  display: none;
+}
+
+.invite-code-panel .invite-code-input:valid + .editable-clear-x {
+  display: inline;
+}
+
+
 
 
 
