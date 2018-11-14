@@ -610,6 +610,59 @@ b、通过:valid+可以控制当input输入内容后<span/>则显示
 }
 
 
+2018-11-14新增：
+/**
+ * 移动端长按事件ontouchstart="touchStart(this)" ontouchend="touchEnd(this)" ontouchmove="touchmove()" 
+ * **/
+let isStillTouch = false;
+let isPress = false;
+
+/**
+ * 开始按:此功能注释
+ * **/
+function touchStart(_this) {
+ isStillTouch = true;
+ setTimeout(function () {
+ longPress(_this);
+ }, 500);
+
+}
+
+/**
+ * 手释放，如果在500毫秒内就释放，则取消长按事件，此时可以执行onclick应该执行的事件:此功能注释
+ * **/
+function touchEnd(_this) {
+ console.log('500毫秒内就释放onclick事件：');
+ isStillTouch = false;
+ if (isPress) {
+ isPress = false;
+ }
+}
+
+/**
+ *  长按事件:此功能注释
+ * **/
+function longPress(_this) {
+ console.log('长按事件：');
+ console.log(_this.dataset);
+
+ if (isStillTouch) {
+  console.log("这里写长按时触发的事件");
+
+ isPress = true;
+ }
+}
+
+/**
+ * 如果手指有移动，则取消所有事件，此时说明用户只是要移动而不是长按: 此功能注释
+ * **/
+function touchmove() {
+ console.log('手指有移动取消所有事件：');
+ isStillTouch = false;
+ isPress = true;
+ }
+
+
 
 
 
