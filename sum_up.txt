@@ -71,6 +71,17 @@ body {
 一、javascript常用的dom操作网址
 https://www.haorooms.com/post/js_dom_api
 
+
+select动态设置options
+document.querySelector('#select').options.add(new Option(item.text, item.id))
+
+模板嵌套循环
+\${list[i].image.map((imgItem,imgIndex)=>`
+                <div class="swiper-slide">
+                <img src="\${imgItem.src_big}" alt=""/>
+                </div>
+                `).join('')}
+
 二、移动端开发使用rem单位做适配
 /* 当用户在手机上修改字体尺寸时，保证布局页面基本布局不变 */
 function setPxPerRem() { //自适应屏幕设置rem
@@ -661,6 +672,19 @@ function touchmove() {
  isStillTouch = false;
  isPress = true;
  }
+ 
+
+2018-11-16 新增
+一、encodeURI()和encodeURIComponent()
+encodeURI()方法会忽略host部分和url合法字符串如/#
+encodeURIComponent()则是全部编码
+二、encodeURI()调用两次来解决乱码问题
+如果不编码两次的话，当服务器自动解码的时候会出现乱码
+三、encodeURI()函数可以把字符串作为URI进行编码
+encodeURI(URIstring);
+该方法不会对ASCII字母和数字进行编码
+
+
 
 
 
