@@ -685,6 +685,42 @@ encodeURI(URIstring);
 该方法不会对ASCII字母和数字进行编码
 
 
+2019-01-04 新年第四天，你好啊！
+一、表单提交和长传文件
+XMLHttpRequest实例有两种方式提交表单
+使用ajax，使用formData的api
+第二种方式是最简单最快捷的，但是缺点是被收集的数据无法使用JSON.stringfy()
+转换为一个JSON字符串
+第一种方式最复杂但也最灵活和最强大
+提交方法
+一个HTML<form>可以用以下四种方式发送
+使用post方法，并设置enctype属性为applocation/x-www-form-unlencoded(默认)
+使用post方法，并设置enctype属性为text/plain
+使用post方法，并设置enctype属性为multipart/form-data
+使用get犯法，enctype属性常被忽略
+
+二、获取自定义属性
+document.querySelector('.body[data-id='name']')
+
+2019-01-07 新增
+数组对象排序
+https://www.cnblogs.com/jasonwang2y60/p/6656103.html
+{
+	result:[
+	  {id:1,name:'中国银行'},
+	  {id:3,name:'北京银行'},
+	  {id:2,name:'河北银行'},
+	  {id:10,name:'保定银行'},
+	  {id:7,name:'涞水银行'}
+	]
+}
+
+function sortId(a,b){  
+   return a.id-b.id;//按id升序 
+}
+result.sort(sortId);
+console.log(result); 
+
 
 
 
