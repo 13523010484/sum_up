@@ -719,8 +719,13 @@ function sortId(a,b){
    return a.id-b.id;//按id升序 
 }
 result.sort(sortId);
-console.log(result); 
+console.log(result);
 
+二、判断当前时间是否在8到20点
+let curTime = parseInt(new Date().getHours()); 
+if(curTime<=7 || curTime>19){
+  alert('不在营业时间点!');
+}
 
 
 
