@@ -161,16 +161,6 @@ margin塌陷：
 滚动的临界值：
 第一页数据：滚动的高度+视窗的高度<=文档的高度
 第二页数据：滚动的高度+视窗的高度>文档的高度，page+1请求第二页的数据
-判断的条件：
-window.addEventListener('scroll', function (e) {// 监听滚动事件
-
-	if(window.screen.availHeight + window.scrollY > document.documentElement.scrollHeight - 10 
-	&& window.screen.availHeight < document.documentElement.scrollHeight){
-		page++;
-		get_list_data();//获取列表数据
-	}
-
-}
 
 显示加载中，数据加载完的提示样式：
 .item_wrap:after {
@@ -727,14 +717,57 @@ if(curTime<=7 || curTime>19){
   alert('不在营业时间点!');
 }
 
+三、js同步 异步 运行机制
+1、js是单线程的（原因是能提高效率，作为浏览器脚本语言，js的主要用途是与用户交互
+，操作DOM，而这也就决定它只能为单线程，否则会带来很多复杂的同步问题），也就是
+说无法同时执行好几段代码，都是从上往下一句一句的执行，前面的代码要先于后面的代
+码一步执行
+2、同步和一步
+同步：在同一时间，你只能做一件事，即使这件事会花费很长的时间，但依然会知道事情处理完毕
+异步：你在做一件事情，因为这件事情会花费很长的时间，在这等待过程中，你可以先去处理其他
+的事情，等这件事情轮到你的时候再过来处理即可
+同步和异步主要的差别在于这条流水线上各个流程的执行顺序不同
+3、js中最基础的异步操作就是setTimeOut()以及setTimeInterval()
+a、setTimeOut()方法用于在指定的毫秒数执行后执行某些操作，clearTimeOut()方法阻止函数的执行
+b、setInterval描述的是每间隔多少时间执行某些操作，它会不停的调用函数，直到clearInterval()
+调用或者关闭窗口
+区别：能用setInterval实现的操作，一定能用setTimeOut来实现
+
+4、同步请求和异步请求的曲别：
+同步是指：发送发出数据后，等接收方发回响应以后才发下一个通讯包的通讯方式
+异步是指：发送方发出数据之后，不等接收方发回响应，接着发送下一个数据包的通讯方式
+同步通信方式与异步通信方式的概念
+同步通信方式要求
 
 
+2019-1-14 新增
+小程序复选框样式
+checkbox .wx-checkbox-input {
+    border-color: #ccc;
+    border-radius: 50%;
+}
+
+checkbox .wx-checkbox-input.wx-checkbox-input-checked {
+    background-color: #48a3f3;
+    border-color: #48a3f3;
+}
+
+checkbox .wx-checkbox-input.wx-checkbox-input-checked::before {
+    content: '\EA08';
+    color: #fff;
+}
 
 
-
-
-
-
+2019-01-19 新增
+1、移动端监听键盘搜索键或回车搜索事件
+onkeypress="search()"
+function search(){
+	if(event.keyCode == 13){// 键盘回车、搜索事件
+		event.preventDefault();
+		/** 键盘触发事件 **/
+	
+	}
+})
 
 
 
