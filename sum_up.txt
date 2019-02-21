@@ -770,6 +770,39 @@ function search(){
 })
 
 
+2019-02-11
+git命令
+1、git init
+在本地创建一个repo文件，进入一个项目目录，执行git init，会初始化repo
+并在当前文件夹下创建一个.git
+2、git clone
+
+2019-02-21
+html5、css3修改radio默认样式(最新)
+结构：
+<label>
+	<input type="radio" name="radio-1" value="0"/>
+	<span>0分</span>
+</label>
+样式：
+ .label-radio-wrap label {
+	margin-right: 9.86vw;
+}
+
+label input[type="radio"]{
+	display: none;
+}
+
+label input[type="radio"] + span {
+	padding-left: 6.4vw;
+	background: url("../image/icon-radio.png") left center no-repeat;
+	background-size: 4.8vw 4.8vw;
+}
+
+label input[type="radio"]:checked + span{
+	background: url("../image/icon-radio-checked.png") left center no-repeat;
+	background-size: 4.8vw 4.8vw;
+}
 
 
 
