@@ -98,6 +98,9 @@ function setPxPerRem() { //自适应屏幕设置rem
 }
 setPxPerRem();
 
+设计稿的宽度为640px的话
+640px/10rem = 已值宽度px/xrem   x = 120px/64
+
 三、修改单选框、复选框的默认样式(使用图片代替单选的默认样式)
 html5结构:
  <label>
@@ -803,6 +806,31 @@ label input[type="radio"]:checked + span{
 	background: url("../image/icon-radio-checked.png") left center no-repeat;
 	background-size: 4.8vw 4.8vw;
 }
+
+
+2019-02-22
+js this和event的区别
+
+
+2019-03-20
+问题：关于ios键盘收起推上去的位置没还原留空白的问题
+1、页面当中只有input标签时
+/**
+ * ios端键盘失去焦点后页面自动滑动到顶部
+ * **/
+document.body.addEventListener('focusout',function () {
+	window.scrollTo(0,0);
+});
+2、页面当中有input,select,textarea,div模拟输入文本
+document.body.addEventListener('focusout',()=>{
+	//键盘收起的事件处理
+	setTimeout(()=>{
+		const scrollHeight = document.documentElement.scrollTop || document.body.scrollTop || 0;
+		wiodow.scrollTo(0,Math.max(scrollHeight - 1,0));
+	},100)
+})
+
+
 
 
 
