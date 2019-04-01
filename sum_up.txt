@@ -831,7 +831,31 @@ document.body.addEventListener('focusout',()=>{
 })
 
 
+2019-03-21
+table表格头部和左侧固定
+结构：
+<div class='body'>
+	
+</div>
+js:
+window.onload = function () {
+	const body = document.querySelector('.body');
+	body.addEventListener('scroll', function (e) {
+		this.querySelector('thead').style.transform = `translate(0,${this.scrollTop}px)`;
+		this.querySelector('.judge-info').style.transform = `translate(0,${this.scrollTop}px)`;
+		this.querySelector('.judge-info-wrap').style.transform = `translate(${this.scrollLeft}px,0`;
+		this.querySelector('.judge-info-wrap').style.zIndex = '100';
+	});
+}
 
+
+2019-04-01
+form表单提交不刷新页面
+由于form表单提交后一定刷新页面，所以为了实现form表单提交不刷新页面的功能
+，给form指定iframe，这样form表单提交后刷新的就是iframe而不是页面了
+<form action="doSomethins.html" method=post name=myform target="fraSubmit"></form>
+<iframe id="fraSubmit" name="fraSubmit" style="display:none;"></iframe>
+通过添加target='fraSubmit'实现无刷新提交表单
 
 
 
