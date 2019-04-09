@@ -41,6 +41,12 @@ doc/*.txt # 会忽略 doc/notes.txt 但不包括 doc/server/arch.txt
 https://cnodejs.org/topic/580f007deae2a24f34e67ead
 
 
+2、常用js的dom操作
+https://www.haorooms.com/post/js_dom_api
+
+3、flex布局教程
+http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html
+
 
 
 前端开发中遇到的问题及解决办法：
@@ -856,6 +862,16 @@ form表单提交不刷新页面
 <form action="doSomethins.html" method=post name=myform target="fraSubmit"></form>
 <iframe id="fraSubmit" name="fraSubmit" style="display:none;"></iframe>
 通过添加target='fraSubmit'实现无刷新提交表单
+
+
+2019-04-09
+前端性能检测
+var performance = window.performance || 
+    window.msPerformance || 
+    window.webkitPerformance;
+if (performance) {
+    // 你的代码
+}
 
 
 
