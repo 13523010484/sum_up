@@ -913,6 +913,264 @@ if (performance) {
 }
 
 
+2019-04-12
+undefined和null的区别
+undefined类型只有一个值，即undefined，当声明的变量还未被初始化时，
+变量的默认值为undefined
+null类型也只有一个值，即为null，null用来表示尚未保存的对象，常用
+来表示函数企图返回一个不存在的对象
+NaN保留字，标明数据类型不是数字
+判断javascript的类型 typeof '123'  "string"
+
+
+2019-04-24 Sticky Footer(粘性页脚)
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0"/>
+    <title>sticky footer(粘性页脚)</title>
+    <link rel="stylesheet" href="../css/common.css"/>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .header {
+            background-color: #08d;
+            color: #fff;
+            line-height: 40px;
+            text-align: center;
+        }
+
+        .section {
+            color: #333;
+        }
+
+        p {
+            padding: 10px;
+        }
+
+        .footer {
+            background-color: #08d;
+            color: #fff;
+            text-align: center;
+        }
+
+        /* 方式一，使用绝对定位和padding实现的页面样式 */
+        /*html,body {
+            height: 100%;
+        }
+
+        .container {
+            position: relative;
+            min-height: 100%;
+            height: auto !important;
+            height: 100%; !*IE6不识别min-height*!
+        }
+
+        .section {
+            padding-bottom: 60px;
+        }
+
+        .footer {
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 60px;
+        }*/
+
+        /*-----------------------分割线---------------------------------*/
+
+        /* 方式二：利用padding-bottom和margin-top完美兼容 */
+        /*html,
+        body {
+            height: 100%;
+        }
+
+        .container {
+            min-height: 100%;
+            height: auto !important;
+            height: 100%; !*IE6不识别min-height*!
+        }
+
+        .section {
+            padding-bottom: 60px;
+        }
+
+        .footer {
+            position: relative;
+            margin-top: -60px;
+            width: 100%;
+            height: 60px;
+        }*/
+
+        /*-------------------分割线-----------------------*/
+
+        /*  方式三：新增块级元素填补页脚遮挡 */
+        /* html,
+         body {
+             height: 100%;
+         }
+
+         .container {
+             min-height: 100%;
+             height: auto !important;
+             height: 100%; !*IE6不识别min-height*!
+             margin-bottom: -60px;
+         }
+
+         .placeholder,
+         .footer {
+             height: 60px;
+         }*/
+
+        /* 方式四：利用表格属性实现完美兼容 */
+        /*html,
+        body {
+            height: 100%;
+        }
+        .container {
+            display: table;
+            width: 100%;
+            min-height: 100%;
+        }
+        .section {
+            display: table-row;
+            height: 100%;
+        }*/
+
+        /*-------------------------------------*/
+
+        /* 方式五：使用calc()计算高度 */
+        /* .container {
+             min-height: calc(100vh - 60px);
+             border: 1px red solid;
+         }
+
+         .footer {
+             height: 60px;
+         }*/
+
+        /*------------------------------*/
+
+        /* 方式六：flex布局 */
+        /*  .container {
+              display: flex;
+              flex-flow: column;
+              min-height: 100vh;
+          }
+          .section {
+              flex: 1;
+          }*/
+
+        /*-------------------------------*/
+
+        /* 方式七：网格效果 */
+        .container {
+            display: flex;
+            flex-flow: column;
+            min-height: 100vh;
+        }
+        .section {
+            flex: 1
+        }
+
+
+    </style>
+</head>
+<body>
+<!--兼容性要求高	①②③
+底部不固定高度	④⑥⑤⑦
+PC端建议	①②
+移动端建议	①②⑥-->
+<!-- 方式一，使用绝对定位和padding方式实现的页面结构 -->
+<!--<div class="container" style="border: 1px red solid;">
+    <div class="header" style="background-color: gold;">头部</div>
+    <div class="section" style="background-color: pink;">
+        <p>中间的文章</p>
+        <p>中间的文章</p>
+        <p>中间的文章</p>
+        <p>中间的文章</p>
+        <p>中间的文章</p>
+    </div>
+    <div class="footer" style="background-color: palegoldenrod;">Copyright© 1994-2019 切图妞</div>
+</div>-->
+
+<!--  分割线   -->
+
+<!-- 方式二：使用相对定位 -->
+<!--<div class="container">
+    <div class="header">二、利用padding-bottom和margin-top完美兼容</div>
+    <div class="section">
+        <p>已知底部高度，利用padding-bottom和margin-top完美兼容</p>
+        <p>1、去除标签多余的margin,padding,给html和body设置100%；</p>
+        <p>2、外部容器min-height为100%，使得内容少时也能撑开</p>
+        <p>3、主体内容设置padding-bottom，这个为底部的高度</p>
+        <p>4、footer高度固定，margin-top的值为高度负值</p>
+    </div>
+</div>
+<div class="footer">Copyright© 1994-2019 切图妞</div>-->
+
+<!-- 分割线 -->
+
+<!-- 方式三：空div填补,空的div用于占位，section中的内容过多时间会见到 -->
+<!--<div class="container">
+    <div class="header">三、新增块级元素填补页脚遮挡</div>
+    <div class="section">
+        <p>已知底部高度，新增块级元素填补页脚遮挡，实现完美兼容</p>
+        <p>1、去除标签多余的margin,padding,给html和body设置100%；</p>
+        <p>2、外部容器min-height为100%，使得内容少时也能撑开</p>
+        <p>3、主体内容设置margin-bottom，值为底部的高度的负值</p>
+        <p>4、footer位置在与container同级，section同级新增块元素.底部和新增块元素高度一致</p>
+    </div>
+    <div class="placeholder"></div>
+</div>
+<div class="footer">Footer Section</div>-->
+
+<!-- 分割线 -->
+
+<!-- 方式四：用表格属性实现兼容 -->
+<!--<div class="container">
+    <div class="header">这里是头部</div>
+    <div class="section">
+        <p>中间的文章</p>
+    </div>
+</div>
+<div class="footer">Copyright© 1994-2019 切图妞</div>-->
+
+
+<!--分割线-->
+
+<!-- 方式五：flex布局 -->
+<!--<div class="container">
+    <div class="header">头部</div>
+    <div class="section">
+        <p>中间文章</p>
+    </div>
+    <div class="footer">Copyright© 1994-2019 切图妞</div>
+</div>-->
+
+
+<!--分割线-->
+
+<!-- 方式六：网格布局 -->
+<div class="container">
+    <div class="header">六、flex弹性布局</div>
+    <div class="section">
+        <p>底部不定高度，利用flex实现效果,兼容性有限建议移动端使用</p>
+        <p>1、外部容器display设为flex弹性布局，flex-flow设置方向为column纵向并设置最小高度为100vh</p>
+        <p>2、主体内容flex属性设为1</p>
+    </div>
+    <div class="footer">Footer Section</div>
+</div>
+
+
+</body>
+</html>
+
 
 
 
