@@ -1,4 +1,4 @@
-一、工具的使用：
+﻿一、工具的使用：
 1、谷歌浏览器下载软件图片时死机的解决办法：卸载输入法充电安装；切换输入法为系统自带的中文输入法进行下载
 1、everything：搜索电脑中的文件
 2、express：接口调试时启动的本地服务
@@ -40,7 +40,6 @@ doc/*.txt # 会忽略 doc/notes.txt 但不包括 doc/server/arch.txt
 1、小程序工具下载（4个代码编译工具）
 https://cnodejs.org/topic/580f007deae2a24f34e67ead
 
-
 2、常用js的dom操作
 https://www.haorooms.com/post/js_dom_api
 
@@ -48,6 +47,11 @@ https://www.haorooms.com/post/js_dom_api
 http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html
 
 
+4、蓝灯官网
+http://www.landeng8.info/
+
+5、奥伦达部落软件下载
+http://soft.orenda.com.cn:8081/
 
 前端开发中遇到的问题及解决办法：
 
