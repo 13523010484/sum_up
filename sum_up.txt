@@ -1182,6 +1182,15 @@ https://segmentfault.com/a/1190000018959389
 2019-05-06 下载软件并安装git
 
 
+2019-05-08 监听浏览器URL的地址锚点改变
+$(window).on('hashchange', function (e) {
+	if (e.oldURL.indexOf('#search') > -1) {
+		hiddeSearchPage();
+	} else if (e.newURL.indexOf('#search') > -1) {
+		showSearchPage();
+	}
+});
+
 
 
 
