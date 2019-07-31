@@ -1286,6 +1286,43 @@ e.target || e.srcElement
 可以通过自定义属性getAttribute()
 
 
+// 删除dom元素
+1、document.querySelector('.search-results').innerHTML = '';
+2、倒序删除
+for (let i = searchItems.length - 1; i >= 0; i--) {
+   document.querySelector('.search-results').removeChild(searchItems[i]);
+}
+
+
+2019-07-24
+一、消除两个span之间的间距的常用方法
+1、父级设置display:flex;
+2、父级font-size:0（font-size为0后，字体间的空格大小就清除了）;
+2、span标签写在同一行
+3、下面这种写法
+<span></span
+><span></span>
+4、span标签设置float:left;
+
+
+2019-07-31 调起微信支付弹框
+WeixinJSBridge.invoke(
+'getBrandWCPayRequest', {
+	"appId": "appId",     //公众号名称，由商户传入
+	"timeStamp": "timeStamp",         //时间戳，自1970年以来的秒数
+	"nonceStr": "nonceStr", //随机串
+	"package": "package",
+	"signType": "signType",         //微信签名方式：
+	"paySign": "paySign" //微信签名
+},
+function (res) {
+	if (res.err_msg == "get_brand_wcpay_request:ok") {
+		// 使用以上方式判断前端返回,微信团队郑重提示：
+		//res.err_msg将在用户支付成功后返回ok，但并不保证它绝对可靠。
+	}
+});
+
+
 
 
 
