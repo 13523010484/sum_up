@@ -1323,6 +1323,51 @@ function (res) {
 });
 
 
+二、css3单行文本溢出，多行文本溢出
+单行：{
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+多行：{
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 2;
+}
+
+
+2019-08-01
+一、图片自适应div
+<div>
+	<img src al=""/>
+</div>
+css:
+div{
+	width:36px;
+	height:36px;
+	overflow: hidden;
+}
+
+div img{
+	object-fit: cover;
+    width: 100%;
+}
+
+二、webpack安装
+https://www.cnblogs.com/ysx215/p/11127931.html
+
+
+2019-08-06
+一、h5 ios自动填充验证码两次
+ios12新增一个功能就是可以自动填充验证码，当点击键盘上面
+的验证码时，如果这时监听了UITextFieldTextDidChangeNotification，
+那么会收到两个相同的回调
+这时候可以手动控制input的长度，
+<input type="number" oninput="if(value.length>6)value=value.slice(0,6)"/>
+<input type="text" maxlength="6"/>
 
 
 
