@@ -1326,16 +1326,20 @@ function (res) {
 二、css3单行文本溢出，多行文本溢出
 单行：{
 	overflow: hidden;
+	word-wrap: break-word;
+    word-break: break-all;
 	text-overflow: ellipsis;
 	white-space: nowrap;
 }
 
 多行：{
 	overflow: hidden;
-	text-overflow: ellipsis;
-	display: -webkit-box;
-	-webkit-box-orient: vertical;
-	-webkit-line-clamp: 2;
+    word-wrap: break-word;
+    word-break: break-all;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
 }
 
 
@@ -1370,6 +1374,15 @@ ios12新增一个功能就是可以自动填充验证码，当点击键盘上面
 <input type="text" maxlength="6"/>
 
 
+2019-08-09 
+一、div加border阴影
+div{
+    box-shadow: 2px 2px 10px rgba(58, 109, 186, 0.2)
+}
+二、将div的背景色分为上下两部分
+div{
+	background: linear-gradient(to bottom, #3a6dba, #3a6dba 60%, #fff 60%, #fff 100%);
+}
 
 
 
