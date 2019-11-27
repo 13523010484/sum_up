@@ -1,4 +1,8 @@
-﻿一、工具的使用：
+﻿一、idea端口被占用的dos命令：
+端口被占用的dos命令：netstat  -ano|findstr  8080(被占用的端口号)
+再输入taskkill  /pid  10372(第一个命令返回的值)  /f
+
+一、工具的使用：
 1、谷歌浏览器下载软件图片时死机的解决办法：卸载输入法充电安装；切换输入法为系统自带的中文输入法进行下载
 1、everything：搜索电脑中的文件
 2、express：接口调试时启动的本地服务
@@ -1356,8 +1360,9 @@ div{
 }
 
 div img{
-	object-fit: cover;
     width: 100%;
+	height: 100%;
+	object-fit: cover;
 }
 
 二、webpack安装
@@ -1385,7 +1390,97 @@ div{
 }
 
 
+2019-08-16
+一、手机号验证
+const telReg = /^1[3-9][0-9]{9}$/;
+二、身份证号简单验证
+const idCardReg = /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/;
 
+
+2019-09-16
+1、operation not permitted 没有权限的解决方法
+使用win+x命令，选择命令提示符（管理员）在里面允许命令就好了
+
+
+2019-11-05
+vue-cli v3.4.0脚手架，手动配置说明
+https://thinkingcao.blog.csdn.net/article/details/102826492
+https://blog.csdn.net/ghost_violets/article/details/102825473
+
+
+2019-11-27
+axios post请求后台接收不到参数解决方案
+1、参数拼接成字符串
+axios.post('/url',`name=${name}&mobile=${mobile}`)
+	.then(res=>{
+		console.log(res);
+	})
+	.catch(error=>{
+		console.log(error)
+	})
+	
+2、FormData()解决
+const name = document.querySelector('input[name=name]').value
+const mobile = document.querySelector('input[name=mobile]').value
+let params = new FormData()
+params.append('name',name);
+params.append('mobile',mobile);
+
+axios.post('/url',params)
+	.then(res=>{
+		console.log(res)
+	})
+	.catch(error=>{
+		console.log(error);
+	})
+
+3、URLSearchParams()解决
+const name = document.querySelector('input[name=name]').value
+const mobile = document.querySelector('input[name=mobile]').value
+let params = new URLSearchParams()
+params.append('name',name);
+params.append('mobile',mobile);
+
+axios.post('/url',params)
+	.then(res=>{
+		console.log(res)
+	})
+	.catch(error=>{
+		console.log(error);
+	})
+	
+4、transformRequest解决
+axios.defaults.headers.common['Content-Type'] = ['application/x-www-form-urlencoded']
+axios({
+	method: 'post',
+	url: '/api/moa/add/log',
+	data: {
+		name: name,
+		mobile: mobile
+	},
+	transformRequest: [data => {
+		let ret = '';
+		for (let i in data) {
+			ret += encodeURIComponent('' + i) + '=' + encodeURIComponent(data['' + i]) + '&'
+		}
+		return ret;
+	}]
+})
+	.then(res=>{
+		console.log(res);
+	})
+	.catch(error=>{
+		console.log(error);
+	});
+	
+	
+5、QS解决
+import qs from 'qs'
+axios.defaults.headers['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8';
+
+axios.post(url, qs.stringify({name:name,mobile:mobile})).then((response) => {
+    return Promise.resolve(response.data);
+ })
 
 
 
