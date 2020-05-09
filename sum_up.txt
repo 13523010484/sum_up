@@ -1,4 +1,4 @@
-﻿一、idea端口被占用的dos命令：
+一、idea端口被占用的dos命令：
 端口被占用的dos命令：netstat  -ano|findstr  8080(被占用的端口号)
 再输入taskkill  /pid  10372(第一个命令返回的值)  /f
 
@@ -1486,14 +1486,18 @@ axios.post(url, qs.stringify({name:name,mobile:mobile})).then((response) => {
 二、手机号格式验证
 const telReg = /^[1][3-9][0-9]{9}$/;
 
+2020-05-09
+已经认证的服务号注册小程序的流程：
+http://kf.qq.com/touch/wxappfaq/170427RRbmMr170427bIVryQ.html
+特殊说明：
+已经认证的服务号可以使用快速注册的方法注册小程序
 
+登录服务号-->小程序开通-->快速注册-->服务号的管理员扫码-->三个勾全选
+-->申请的小程序邮箱、密码-->激活邮箱-->绑定小程序的管理员（开发此小程序的人），
+输入姓名、身份证号，手机号。小程序的注册完成。
 
-
-
-
-
-
-
-
-
-
+码云地址：
+https://gitee.com/JFlower
+码云密匙
+例子：https://gitee.com/you/project?private_token={token}
+pJXSVNVrummAVv3fc8wC
